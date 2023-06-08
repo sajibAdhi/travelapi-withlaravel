@@ -13,12 +13,11 @@ return new class extends Migration
     {
         Schema::create('travels', function (Blueprint $table) {
             $table->id();
-            $table->boolean('is_public');
-            $table->string('slug');
+            $table->boolean('is_public')->default(false);
+            $table->string('slug')->unique();
             $table->string('name');
-            $table->string('description');
-            $table->integer('number_of_days');
-            $table->integer('number_of_nights');
+            $table->text('description');
+            $table->unsignedInteger('number_of_days');
             $table->timestamps();
         });
     }
