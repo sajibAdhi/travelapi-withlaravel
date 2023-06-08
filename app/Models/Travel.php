@@ -22,9 +22,9 @@ class Travel extends Model
         'number_of_days',
     ];
 
-    public function tour(): HasMany
+    public function tours(): HasMany
     {
-        return $this->hasMany(Tour::class, 'travel_id', 'id');
+        return $this->hasMany(Tour::class);
     }
 
     public function sluggable(): array
