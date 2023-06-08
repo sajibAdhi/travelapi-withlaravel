@@ -14,7 +14,7 @@ class Travel extends Model
 
     protected $table = 'travels';
 
-    public $fillable = [
+    protected $fillable = [
         'is_public',
         'slug',
         'name',
