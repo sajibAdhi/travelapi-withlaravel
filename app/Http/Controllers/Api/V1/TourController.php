@@ -3,18 +3,19 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ToursListRequest;
 use App\Http\Resources\TourResource;
 use App\Models\Travel;
-use Illuminate\Http\Request;
 
 class TourController extends Controller
 {
-    public function index(Travel $travel, Request $request)
+    public function index(Travel $travel, ToursListRequest $request)
     {
+
         /*
          * priceFrom, priceTo, dateFrom (from that startingDate) and dateTo (until that startingDate)
+         * User can sort the list by price asc and desc.
          */
-
         $tours = $travel->tours()
             ->when($request->priceFrom, function ($query) use ($request) {
                 $query->where('price', '>=', $request->priceFrom * 100);
@@ -27,6 +28,9 @@ class TourController extends Controller
             })
             ->when($request->dateTo, function ($query) use ($request) {
                 $query->where('starting_date', '<=', $request->dateTo);
+            })
+            ->when($request->sortBy && $request->sortOrder, function ($query) use ($request) {
+                $query->orderBy($request->sortBy, $request->sortOrder);
             })
             ->orderBy('starting_date')
             ->paginate();
