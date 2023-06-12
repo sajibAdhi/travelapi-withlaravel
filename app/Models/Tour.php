@@ -20,6 +20,11 @@ class Tour extends Model
         'price',
     ];
 
+    public function travel(): BelongsTo
+    {
+        return $this->belongsTo(Travel::class);
+    }
+
     public function price(): Attribute
     {
         return Attribute::make(
