@@ -15,6 +15,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        $this->call(RoleSeeder::class);
+
         Tour::factory()
             ->count(20)
             ->for($travel = Travel::factory()->state(['is_public' => true])->create())
@@ -22,12 +24,5 @@ class DatabaseSeeder extends Seeder
                 ['starting_date' => now(), 'ending_date' => now()->addDays($travel->number_of_days),],
                 ['starting_date' => now()->addDays(2), 'ending_date' => now()->addDays(2 + $travel->number_of_days),]
             ))->create();
-
-        // \App\Models\User::factory(10)->create();
-
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
     }
 }
