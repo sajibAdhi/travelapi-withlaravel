@@ -33,7 +33,7 @@ class UserCreateCommand extends Command
     {
         $user['name'] = $this->ask('Name of the new user');
         $user['email'] = $this->ask('Email of the new user');
-        $user['password'] = Hash::make($this->secret('Password of the new user'));
+        $user['password'] = $this->secret('Password of the new user');
 
         $roleName = $this->choice('Role of the new user', ['admin', 'editor'], 1);
         $role = Role::where('name', $roleName)->first();
