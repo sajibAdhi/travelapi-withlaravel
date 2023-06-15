@@ -12,13 +12,14 @@ class LoginController extends Controller
 {
     /**
      * Handle the incoming request.
+     *
      * @throws ValidationException
      */
     public function __invoke(LoginRequest $request)
     {
         $user = User::where('email', $request->email)->first();
 
-        if (!$user || !Hash::check($request->password, $user->password)) {
+        if (! $user || ! Hash::check($request->password, $user->password)) {
             return response()->json([
                 'email' => ['The provided credentials are incorrect.'],
             ], 422);

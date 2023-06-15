@@ -21,8 +21,8 @@ class DatabaseSeeder extends Seeder
             ->count(20)
             ->for($travel = Travel::factory()->state(['is_public' => true])->create())
             ->state(new Sequence(
-                ['starting_date' => now(), 'ending_date' => now()->addDays($travel->number_of_days),],
-                ['starting_date' => now()->addDays(2), 'ending_date' => now()->addDays(2 + $travel->number_of_days),]
+                ['starting_date' => now(), 'ending_date' => now()->addDays($travel->number_of_days)],
+                ['starting_date' => now()->addDays(2), 'ending_date' => now()->addDays(2 + $travel->number_of_days)]
             ))->create();
     }
 }
