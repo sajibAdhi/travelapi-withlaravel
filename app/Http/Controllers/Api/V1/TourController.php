@@ -11,7 +11,6 @@ class TourController extends Controller
 {
     public function index(Travel $travel, ToursListRequest $request)
     {
-
         /*
          * priceFrom, priceTo, dateFrom (from that startingDate) and dateTo (until that startingDate)
          * User can sort the list by price asc and desc.
