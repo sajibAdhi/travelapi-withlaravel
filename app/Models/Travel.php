@@ -9,6 +9,15 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
+/**
+ * @property int $id
+ * @property bool $is_public
+ * @property string $name
+ * @property string $slug
+ * @property string $description
+ * @property int $number_of_days
+ * @property int $number_of_nights
+ */
 class Travel extends Model
 {
     use HasFactory, Sluggable, HasUuids;
@@ -40,7 +49,7 @@ class Travel extends Model
     public function numberOfNights(): Attribute
     {
         return Attribute::make(
-            get: fn ($value, $attribute) => $attribute['number_of_days'] - 1
+            get: fn($value, $attribute) => $attribute['number_of_days'] - 1
         );
     }
 }

@@ -8,6 +8,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
+/**
+ * @property mixed $id
+ * @property mixed $name
+ * @property mixed $starting_date
+ * @property mixed $ending_date
+ * @property mixed $price
+ */
 class Tour extends Model
 {
     use HasFactory, HasUuids;
@@ -28,8 +35,8 @@ class Tour extends Model
     public function price(): Attribute
     {
         return Attribute::make(
-            get: fn ($value) => $value / 100,
-            set: fn ($value) => $value * 100,
+            get: fn($value) => $value / 100,
+            set: fn($value) => $value * 100,
         );
     }
 }
