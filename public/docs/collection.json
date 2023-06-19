@@ -10,7 +10,7 @@
     ],
     "info": {
         "name": "Travel API",
-        "_postman_id": "6aff9874-eeda-4e46-ae31-3f468d9ded91",
+        "_postman_id": "275125a8-8d8b-449d-94db-350af0ddbdc7",
         "description": "Travel API endpoint documentation",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
     },
@@ -41,7 +41,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"is_public\":true,\"name\":\"dsuvftrbrdz\",\"description\":\"adipisci\",\"number_of_days\":76}"
+                            "raw": "{\"is_public\":true,\"name\":\"riwkjnomrqzvcyavhnf\",\"description\":\"dolor\",\"number_of_days\":71}"
                         },
                         "description": "Create a new Travel record."
                     },
@@ -90,7 +90,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"name\":\"ghbwzmujmrwchvvesmbpmu\",\"starting_date\":\"2023-06-19T09:43:14\",\"ending_date\":\"2122-10-07\",\"price\":34}"
+                            "raw": "{\"name\":\"rdeauatbkkqumtabso\",\"starting_date\":\"2023-06-19T09:51:01\",\"ending_date\":\"2115-12-13\",\"price\":31}"
                         },
                         "description": "Create a new Tour record."
                     },
@@ -139,7 +139,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"is_public\":false,\"name\":\"c\",\"description\":\"dolores\",\"number_of_days\":86}"
+                            "raw": "{\"is_public\":true,\"name\":\"lxouiaxagbpwrhflltmzmx\",\"description\":\"similique\",\"number_of_days\":46}"
                         },
                         "description": "Update an existing Travel record."
                     },
@@ -186,7 +186,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"email\":\"lschimmel@example.com\",\"password\":\"upqK^\\\"bi\"}"
+                            "raw": "{\"email\":\"dell58@example.net\",\"password\":\"l?MF1U;\"}"
                         },
                         "description": "Login a user.",
                         "auth": {
@@ -370,7 +370,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"priceFrom\":9304401.450142629444599151611328125,\"priceTo\":2501143.4700000002048909664154052734375,\"dateFrom\":\"2023-06-19T09:43:14\",\"dateTo\":\"2023-06-19T09:43:14\",\"sortBy\":\"price\",\"sortOrder\":\"asc\"}"
+                            "raw": "{\"priceFrom\":368378.8484000000171363353729248046875,\"priceTo\":1.5651148829999999012585476521053351461887359619140625,\"dateFrom\":\"2023-06-19T09:51:01\",\"dateTo\":\"2023-06-19T09:51:01\",\"sortBy\":\"price\",\"sortOrder\":\"asc\"}"
                         },
                         "description": "Get a list of Travel tours.",
                         "auth": {
@@ -396,6 +396,13 @@
         }
     ],
     "auth": {
-        "type": "noauth"
+        "type": "bearer",
+        "bearer": [
+            {
+                "key": "access_token",
+                "value": null,
+                "type": "string"
+            }
+        ]
     }
 }

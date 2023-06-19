@@ -141,7 +141,9 @@
 You can switch the language used with the tabs at the top right (or from the nav menu at the top left on mobile).</aside>
 
         <h1 id="authenticating-requests">Authenticating requests</h1>
-<p>This API is not authenticated.</p>
+<p>To authenticate requests, include an <strong><code>Authorization</code></strong> header with the value <strong><code>"Bearer {YOUR_AUTH_KEY}"</code></strong>.</p>
+<p>All authenticated endpoints are marked with a <code>requires authentication</code> badge in the documentation below.</p>
+<p>You can retrieve your token by logging in.</p>
 
         <h1 id="admin-endpoint">Admin endpoint</h1>
 
@@ -162,13 +164,14 @@ You can switch the language used with the tabs at the top right (or from the nav
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
     "http://127.0.0.1:8000/api/v1/admin/travels" \
+    --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
     \"is_public\": true,
-    \"name\": \"dsuvftrbrdz\",
-    \"description\": \"adipisci\",
-    \"number_of_days\": 76
+    \"name\": \"riwkjnomrqzvcyavhnf\",
+    \"description\": \"dolor\",
+    \"number_of_days\": 71
 }"
 </code></pre></div>
 
@@ -179,15 +182,16 @@ You can switch the language used with the tabs at the top right (or from the nav
 );
 
 const headers = {
+    "Authorization": "Bearer {YOUR_AUTH_KEY}",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
 
 let body = {
     "is_public": true,
-    "name": "dsuvftrbrdz",
-    "description": "adipisci",
-    "number_of_days": 76
+    "name": "riwkjnomrqzvcyavhnf",
+    "description": "dolor",
+    "number_of_days": 71
 };
 
 fetch(url, {
@@ -269,6 +273,17 @@ You can check the Dev Tools console for debugging information.</code></pre>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
                                 <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="Authorization" class="auth-value"               data-endpoint="POSTapi-v1-admin-travels"
+               value="Bearer {YOUR_AUTH_KEY}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer {YOUR_AUTH_KEY}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
@@ -318,10 +333,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                name="name"                data-endpoint="POSTapi-v1-admin-travels"
-               value="dsuvftrbrdz"
+               value="riwkjnomrqzvcyavhnf"
                data-component="body">
     <br>
-<p>Must not be greater than 255 characters. Example: <code>dsuvftrbrdz</code></p>
+<p>Must not be greater than 255 characters. Example: <code>riwkjnomrqzvcyavhnf</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>description</code></b>&nbsp;&nbsp;
@@ -329,10 +344,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                name="description"                data-endpoint="POSTapi-v1-admin-travels"
-               value="adipisci"
+               value="dolor"
                data-component="body">
     <br>
-<p>Example: <code>adipisci</code></p>
+<p>Example: <code>dolor</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>number_of_days</code></b>&nbsp;&nbsp;
@@ -340,10 +355,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                name="number_of_days"                data-endpoint="POSTapi-v1-admin-travels"
-               value="76"
+               value="71"
                data-component="body">
     <br>
-<p>Must be at least 1. Example: <code>76</code></p>
+<p>Must be at least 1. Example: <code>71</code></p>
         </div>
         </form>
 
@@ -362,13 +377,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
     "http://127.0.0.1:8000/api/v1/admin/travels/9968352d-b1ee-4b23-bb49-b5931da0466f/tours" \
+    --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"name\": \"ghbwzmujmrwchvvesmbpmu\",
-    \"starting_date\": \"2023-06-19T09:43:14\",
-    \"ending_date\": \"2122-10-07\",
-    \"price\": 34
+    \"name\": \"rdeauatbkkqumtabso\",
+    \"starting_date\": \"2023-06-19T09:51:01\",
+    \"ending_date\": \"2115-12-13\",
+    \"price\": 31
 }"
 </code></pre></div>
 
@@ -379,15 +395,16 @@ You can check the Dev Tools console for debugging information.</code></pre>
 );
 
 const headers = {
+    "Authorization": "Bearer {YOUR_AUTH_KEY}",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
 
 let body = {
-    "name": "ghbwzmujmrwchvvesmbpmu",
-    "starting_date": "2023-06-19T09:43:14",
-    "ending_date": "2122-10-07",
-    "price": 34
+    "name": "rdeauatbkkqumtabso",
+    "starting_date": "2023-06-19T09:51:01",
+    "ending_date": "2115-12-13",
+    "price": 31
 };
 
 fetch(url, {
@@ -477,6 +494,17 @@ You can check the Dev Tools console for debugging information.</code></pre>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
                                 <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="Authorization" class="auth-value"               data-endpoint="POSTapi-v1-admin-travels--travel_id--tours"
+               value="Bearer {YOUR_AUTH_KEY}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer {YOUR_AUTH_KEY}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
@@ -517,10 +545,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                name="name"                data-endpoint="POSTapi-v1-admin-travels--travel_id--tours"
-               value="ghbwzmujmrwchvvesmbpmu"
+               value="rdeauatbkkqumtabso"
                data-component="body">
     <br>
-<p>Must not be greater than 255 characters. Example: <code>ghbwzmujmrwchvvesmbpmu</code></p>
+<p>Must not be greater than 255 characters. Example: <code>rdeauatbkkqumtabso</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>starting_date</code></b>&nbsp;&nbsp;
@@ -528,10 +556,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                name="starting_date"                data-endpoint="POSTapi-v1-admin-travels--travel_id--tours"
-               value="2023-06-19T09:43:14"
+               value="2023-06-19T09:51:01"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2023-06-19T09:43:14</code></p>
+<p>Must be a valid date. Example: <code>2023-06-19T09:51:01</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>ending_date</code></b>&nbsp;&nbsp;
@@ -539,10 +567,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                name="ending_date"                data-endpoint="POSTapi-v1-admin-travels--travel_id--tours"
-               value="2122-10-07"
+               value="2115-12-13"
                data-component="body">
     <br>
-<p>Must be a valid date. Must be a date after <code>starting_date</code>. Example: <code>2122-10-07</code></p>
+<p>Must be a valid date. Must be a date after <code>starting_date</code>. Example: <code>2115-12-13</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>price</code></b>&nbsp;&nbsp;
@@ -550,10 +578,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                name="price"                data-endpoint="POSTapi-v1-admin-travels--travel_id--tours"
-               value="34"
+               value="31"
                data-component="body">
     <br>
-<p>Must be at least 0. Example: <code>34</code></p>
+<p>Must be at least 0. Example: <code>31</code></p>
         </div>
         </form>
 
@@ -572,13 +600,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
     "http://127.0.0.1:8000/api/v1/admin/travels/9968352d-b1ee-4b23-bb49-b5931da0466f" \
+    --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"is_public\": false,
-    \"name\": \"c\",
-    \"description\": \"dolores\",
-    \"number_of_days\": 86
+    \"is_public\": true,
+    \"name\": \"lxouiaxagbpwrhflltmzmx\",
+    \"description\": \"similique\",
+    \"number_of_days\": 46
 }"
 </code></pre></div>
 
@@ -589,15 +618,16 @@ You can check the Dev Tools console for debugging information.</code></pre>
 );
 
 const headers = {
+    "Authorization": "Bearer {YOUR_AUTH_KEY}",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
 
 let body = {
-    "is_public": false,
-    "name": "c",
-    "description": "dolores",
-    "number_of_days": 86
+    "is_public": true,
+    "name": "lxouiaxagbpwrhflltmzmx",
+    "description": "similique",
+    "number_of_days": 46
 };
 
 fetch(url, {
@@ -679,6 +709,17 @@ You can check the Dev Tools console for debugging information.</code></pre>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
                                 <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="Authorization" class="auth-value"               data-endpoint="PUTapi-v1-admin-travels--travel_id-"
+               value="Bearer {YOUR_AUTH_KEY}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer {YOUR_AUTH_KEY}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
@@ -732,7 +773,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>false</code></p>
+<p>Example: <code>true</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>name</code></b>&nbsp;&nbsp;
@@ -740,10 +781,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                name="name"                data-endpoint="PUTapi-v1-admin-travels--travel_id-"
-               value="c"
+               value="lxouiaxagbpwrhflltmzmx"
                data-component="body">
     <br>
-<p>Must not be greater than 255 characters. Example: <code>c</code></p>
+<p>Must not be greater than 255 characters. Example: <code>lxouiaxagbpwrhflltmzmx</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>description</code></b>&nbsp;&nbsp;
@@ -751,10 +792,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                name="description"                data-endpoint="PUTapi-v1-admin-travels--travel_id-"
-               value="dolores"
+               value="similique"
                data-component="body">
     <br>
-<p>Example: <code>dolores</code></p>
+<p>Example: <code>similique</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>number_of_days</code></b>&nbsp;&nbsp;
@@ -762,10 +803,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                name="number_of_days"                data-endpoint="PUTapi-v1-admin-travels--travel_id-"
-               value="86"
+               value="46"
                data-component="body">
     <br>
-<p>Must be at least 1. Example: <code>86</code></p>
+<p>Must be at least 1. Example: <code>46</code></p>
         </div>
         </form>
 
@@ -790,8 +831,8 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"email\": \"lschimmel@example.com\",
-    \"password\": \"upqK^\\\"bi\"
+    \"email\": \"dell58@example.net\",
+    \"password\": \"l?MF1U;\"
 }"
 </code></pre></div>
 
@@ -807,8 +848,8 @@ const headers = {
 };
 
 let body = {
-    "email": "lschimmel@example.com",
-    "password": "upqK^\"bi"
+    "email": "dell58@example.net",
+    "password": "l?MF1U;"
 };
 
 fetch(url, {
@@ -917,10 +958,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                name="email"                data-endpoint="POSTapi-v1-login"
-               value="lschimmel@example.com"
+               value="dell58@example.net"
                data-component="body">
     <br>
-<p>Must be a valid email address. Example: <code>lschimmel@example.com</code></p>
+<p>Must be a valid email address. Example: <code>dell58@example.net</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>password</code></b>&nbsp;&nbsp;
@@ -928,10 +969,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                name="password"                data-endpoint="POSTapi-v1-login"
-               value="upqK^"bi"
+               value="l?MF1U;"
                data-component="body">
     <br>
-<p>Example: <code>upqK^"bi</code></p>
+<p>Example: <code>l?MF1U;</code></p>
         </div>
         </form>
 
@@ -1540,10 +1581,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"priceFrom\": 9304401.450142629444599151611328125,
-    \"priceTo\": 2501143.4700000002048909664154052734375,
-    \"dateFrom\": \"2023-06-19T09:43:14\",
-    \"dateTo\": \"2023-06-19T09:43:14\",
+    \"priceFrom\": 368378.8484000000171363353729248046875,
+    \"priceTo\": 1.5651148829999999012585476521053351461887359619140625,
+    \"dateFrom\": \"2023-06-19T09:51:01\",
+    \"dateTo\": \"2023-06-19T09:51:01\",
     \"sortBy\": \"price\",
     \"sortOrder\": \"asc\"
 }"
@@ -1572,10 +1613,10 @@ const headers = {
 };
 
 let body = {
-    "priceFrom": 9304401.450142629444599151611328125,
-    "priceTo": 2501143.4700000002048909664154052734375,
-    "dateFrom": "2023-06-19T09:43:14",
-    "dateTo": "2023-06-19T09:43:14",
+    "priceFrom": 368378.8484000000171363353729248046875,
+    "priceTo": 1.5651148829999999012585476521053351461887359619140625,
+    "dateFrom": "2023-06-19T09:51:01",
+    "dateTo": "2023-06-19T09:51:01",
     "sortBy": "price",
     "sortOrder": "asc"
 };
@@ -1823,10 +1864,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="number" style="display: none"
                name="priceFrom"                data-endpoint="GETapi-v1-travels--travel_slug--tours"
-               value="9304401.4501426"
+               value="368378.8484"
                data-component="body">
     <br>
-<p>Example: <code>9304401.4501426</code></p>
+<p>Example: <code>368378.8484</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>priceTo</code></b>&nbsp;&nbsp;
@@ -1834,10 +1875,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="number" style="display: none"
                name="priceTo"                data-endpoint="GETapi-v1-travels--travel_slug--tours"
-               value="2501143.47"
+               value="1.565114883"
                data-component="body">
     <br>
-<p>Example: <code>2501143.47</code></p>
+<p>Example: <code>1.565114883</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>dateFrom</code></b>&nbsp;&nbsp;
@@ -1845,10 +1886,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                name="dateFrom"                data-endpoint="GETapi-v1-travels--travel_slug--tours"
-               value="2023-06-19T09:43:14"
+               value="2023-06-19T09:51:01"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2023-06-19T09:43:14</code></p>
+<p>Must be a valid date. Example: <code>2023-06-19T09:51:01</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>dateTo</code></b>&nbsp;&nbsp;
@@ -1856,10 +1897,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                name="dateTo"                data-endpoint="GETapi-v1-travels--travel_slug--tours"
-               value="2023-06-19T09:43:14"
+               value="2023-06-19T09:51:01"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2023-06-19T09:43:14</code></p>
+<p>Must be a valid date. Example: <code>2023-06-19T09:51:01</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>sortBy</code></b>&nbsp;&nbsp;
