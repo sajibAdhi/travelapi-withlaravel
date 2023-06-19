@@ -5,6 +5,14 @@ namespace App\Http\Requests;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 
+/**
+ * @property mixed $priceFrom
+ * @property mixed $priceTo
+ * @property mixed $dateFrom
+ * @property mixed $dateTo
+ * @property mixed $sortBy
+ * @property mixed $sortOrder
+ */
 class ToursListRequest extends FormRequest
 {
     /**

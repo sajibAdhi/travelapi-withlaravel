@@ -6,14 +6,19 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginRequest;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\ValidationException;
 
+/**
+ * @group Auth endpoint
+ */
 class LoginController extends Controller
 {
     /**
-     * Handle the incoming request.
+     * POST Login
      *
-     * @throws ValidationException
+     * Login a user.
+     *
+     * @response {"access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9"}
+     * @response 422 {"email": ["The provided credentials are incorrect."]}
      */
     public function __invoke(LoginRequest $request)
     {
