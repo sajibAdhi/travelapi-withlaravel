@@ -12,7 +12,14 @@ paths:
       summary: 'POST Travel'
       operationId: pOSTTravel
       description: 'Create a new Travel record.'
-      parameters: []
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
       responses:
         200:
           description: ''
@@ -61,15 +68,15 @@ paths:
                 name:
                   type: string
                   description: 'Must not be greater than 255 characters.'
-                  example: dsuvftrbrdz
+                  example: riwkjnomrqzvcyavhnf
                 description:
                   type: string
                   description: ''
-                  example: adipisci
+                  example: dolor
                 number_of_days:
                   type: integer
                   description: 'Must be at least 1.'
-                  example: 76
+                  example: 71
               required:
                 - is_public
                 - name
@@ -80,7 +87,14 @@ paths:
       summary: 'POST Tour'
       operationId: pOSTTour
       description: 'Create a new Tour record.'
-      parameters: []
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
       responses:
         200:
           description: ''
@@ -150,19 +164,19 @@ paths:
                 name:
                   type: string
                   description: 'Must not be greater than 255 characters.'
-                  example: ghbwzmujmrwchvvesmbpmu
+                  example: rdeauatbkkqumtabso
                 starting_date:
                   type: string
                   description: 'Must be a valid date.'
-                  example: '2023-06-19T09:43:14'
+                  example: '2023-06-19T09:51:01'
                 ending_date:
                   type: string
                   description: 'Must be a valid date. Must be a date after <code>starting_date</code>.'
-                  example: '2122-10-07'
+                  example: '2115-12-13'
                 price:
                   type: number
                   description: 'Must be at least 0.'
-                  example: 34
+                  example: 31
               required:
                 - name
                 - starting_date
@@ -182,7 +196,14 @@ paths:
       summary: 'PUT Travel'
       operationId: pUTTravel
       description: 'Update an existing Travel record.'
-      parameters: []
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
       responses:
         200:
           description: ''
@@ -227,19 +248,19 @@ paths:
                 is_public:
                   type: boolean
                   description: ''
-                  example: false
+                  example: true
                 name:
                   type: string
                   description: 'Must not be greater than 255 characters.'
-                  example: c
+                  example: lxouiaxagbpwrhflltmzmx
                 description:
                   type: string
                   description: ''
-                  example: dolores
+                  example: similique
                 number_of_days:
                   type: integer
                   description: 'Must be at least 1.'
-                  example: 86
+                  example: 46
               required:
                 - is_public
                 - name
@@ -301,11 +322,11 @@ paths:
                 email:
                   type: string
                   description: 'Must be a valid email address.'
-                  example: lschimmel@example.com
+                  example: dell58@example.net
                 password:
                   type: string
                   description: ''
-                  example: 'upqK^"bi'
+                  example: 'l?MF1U;'
               required:
                 - email
                 - password
@@ -1236,19 +1257,19 @@ paths:
                 priceFrom:
                   type: number
                   description: ''
-                  example: 9304401.4501426
+                  example: 368378.8484
                 priceTo:
                   type: number
                   description: ''
-                  example: 2501143.47
+                  example: 1.565114883
                 dateFrom:
                   type: string
                   description: 'Must be a valid date.'
-                  example: '2023-06-19T09:43:14'
+                  example: '2023-06-19T09:51:01'
                 dateTo:
                   type: string
                   description: 'Must be a valid date.'
-                  example: '2023-06-19T09:43:14'
+                  example: '2023-06-19T09:51:01'
                 sortBy:
                   type: string
                   description: 'Must be one of <code>price</code>.'
@@ -1280,3 +1301,12 @@ tags:
   -
     name: 'Public endpoint'
     description: ''
+components:
+  securitySchemes:
+    default:
+      type: http
+      scheme: bearer
+      description: ''
+security:
+  -
+    default: []
