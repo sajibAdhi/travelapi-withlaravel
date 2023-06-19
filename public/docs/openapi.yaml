@@ -1,0 +1,1282 @@
+openapi: 3.0.3
+info:
+  title: 'Travel API'
+  description: 'Travel API endpoint documentation'
+  version: 1.0.0
+servers:
+  -
+    url: 'http://127.0.0.1:8000'
+paths:
+  /api/v1/admin/travels:
+    post:
+      summary: 'POST Travel'
+      operationId: pOSTTravel
+      description: 'Create a new Travel record.'
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: '{"data": {"id": 123b13bn-2342-2342-2342-234234234234, "name": "Travel 1", "slug": "travel-1", "description": "Description of travel 1", "number_of_days": 5, "number_of_nights": 4}'
+        422:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'The given data was invalid.'
+                  errors:
+                    name:
+                      - 'The name has already been taken.'
+                properties:
+                  message:
+                    type: string
+                    example: 'The given data was invalid.'
+                  errors:
+                    type: object
+                    properties:
+                      name:
+                        type: array
+                        example:
+                          - 'The name has already been taken.'
+                        items:
+                          type: string
+      tags:
+        - 'Admin endpoint'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                is_public:
+                  type: boolean
+                  description: ''
+                  example: true
+                name:
+                  type: string
+                  description: 'Must not be greater than 255 characters.'
+                  example: dsuvftrbrdz
+                description:
+                  type: string
+                  description: ''
+                  example: adipisci
+                number_of_days:
+                  type: integer
+                  description: 'Must be at least 1.'
+                  example: 76
+              required:
+                - is_public
+                - name
+                - description
+                - number_of_days
+  '/api/v1/admin/travels/{travel_id}/tours':
+    post:
+      summary: 'POST Tour'
+      operationId: pOSTTour
+      description: 'Create a new Tour record.'
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    id: 1
+                    name: 'Tour 1'
+                    starting_date: '2021-01-01'
+                    ending_date: '2021-01-10'
+                    price: '1000.00'
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 1
+                      name:
+                        type: string
+                        example: 'Tour 1'
+                      starting_date:
+                        type: string
+                        example: '2021-01-01'
+                      ending_date:
+                        type: string
+                        example: '2021-01-10'
+                      price:
+                        type: string
+                        example: '1000.00'
+        422:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'The given data was invalid.'
+                  errors:
+                    name:
+                      - 'The name has already been taken.'
+                properties:
+                  message:
+                    type: string
+                    example: 'The given data was invalid.'
+                  errors:
+                    type: object
+                    properties:
+                      name:
+                        type: array
+                        example:
+                          - 'The name has already been taken.'
+                        items:
+                          type: string
+      tags:
+        - 'Admin endpoint'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'Must not be greater than 255 characters.'
+                  example: ghbwzmujmrwchvvesmbpmu
+                starting_date:
+                  type: string
+                  description: 'Must be a valid date.'
+                  example: '2023-06-19T09:43:14'
+                ending_date:
+                  type: string
+                  description: 'Must be a valid date. Must be a date after <code>starting_date</code>.'
+                  example: '2122-10-07'
+                price:
+                  type: number
+                  description: 'Must be at least 0.'
+                  example: 34
+              required:
+                - name
+                - starting_date
+                - ending_date
+                - price
+    parameters:
+      -
+        in: path
+        name: travel_id
+        description: 'The ID of the travel.'
+        example: 9968352d-b1ee-4b23-bb49-b5931da0466f
+        required: true
+        schema:
+          type: string
+  '/api/v1/admin/travels/{travel_id}':
+    put:
+      summary: 'PUT Travel'
+      operationId: pUTTravel
+      description: 'Update an existing Travel record.'
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: '{"data": {"id": 123b13bn-2342-2342-2342-234234234234, "name": "Travel 2", "slug": "travel-1", "description": "Description of travel 1", "number_of_days": 5, "number_of_nights": 4}'
+        422:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'The given data was invalid.'
+                  errors:
+                    name:
+                      - 'The name has already been taken.'
+                properties:
+                  message:
+                    type: string
+                    example: 'The given data was invalid.'
+                  errors:
+                    type: object
+                    properties:
+                      name:
+                        type: array
+                        example:
+                          - 'The name has already been taken.'
+                        items:
+                          type: string
+      tags:
+        - 'Admin endpoint'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                is_public:
+                  type: boolean
+                  description: ''
+                  example: false
+                name:
+                  type: string
+                  description: 'Must not be greater than 255 characters.'
+                  example: c
+                description:
+                  type: string
+                  description: ''
+                  example: dolores
+                number_of_days:
+                  type: integer
+                  description: 'Must be at least 1.'
+                  example: 86
+              required:
+                - is_public
+                - name
+                - description
+                - number_of_days
+    parameters:
+      -
+        in: path
+        name: travel_id
+        description: 'The ID of the travel.'
+        example: 9968352d-b1ee-4b23-bb49-b5931da0466f
+        required: true
+        schema:
+          type: string
+  /api/v1/login:
+    post:
+      summary: 'POST Login'
+      operationId: pOSTLogin
+      description: 'Login a user.'
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  access_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9
+                properties:
+                  access_token:
+                    type: string
+                    example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9
+        422:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  email:
+                    - 'The provided credentials are incorrect.'
+                properties:
+                  email:
+                    type: array
+                    example:
+                      - 'The provided credentials are incorrect.'
+                    items:
+                      type: string
+      tags:
+        - 'Auth endpoint'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: 'Must be a valid email address.'
+                  example: lschimmel@example.com
+                password:
+                  type: string
+                  description: ''
+                  example: 'upqK^"bi'
+              required:
+                - email
+                - password
+      security: []
+  /api/v1/user:
+    get:
+      summary: ''
+      operationId: getApiV1User
+      description: ''
+      parameters: []
+      responses:
+        404:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'The route api/v1/user could not be found.'
+                  exception: Symfony\Component\HttpKernel\Exception\NotFoundHttpException
+                  file: /home/adovasoft_f001/development/travelapi-withlaravel/vendor/laravel/framework/src/Illuminate/Routing/AbstractRouteCollection.php
+                  line: 44
+                  trace:
+                    -
+                      file: /home/adovasoft_f001/development/travelapi-withlaravel/vendor/laravel/framework/src/Illuminate/Routing/RouteCollection.php
+                      line: 162
+                      function: handleMatchedRoute
+                      class: Illuminate\Routing\AbstractRouteCollection
+                      type: '->'
+                    -
+                      file: /home/adovasoft_f001/development/travelapi-withlaravel/vendor/laravel/framework/src/Illuminate/Routing/Router.php
+                      line: 754
+                      function: match
+                      class: Illuminate\Routing\RouteCollection
+                      type: '->'
+                    -
+                      file: /home/adovasoft_f001/development/travelapi-withlaravel/vendor/laravel/framework/src/Illuminate/Routing/Router.php
+                      line: 741
+                      function: findRoute
+                      class: Illuminate\Routing\Router
+                      type: '->'
+                    -
+                      file: /home/adovasoft_f001/development/travelapi-withlaravel/vendor/laravel/framework/src/Illuminate/Routing/Router.php
+                      line: 730
+                      function: dispatchToRoute
+                      class: Illuminate\Routing\Router
+                      type: '->'
+                    -
+                      file: /home/adovasoft_f001/development/travelapi-withlaravel/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php
+                      line: 200
+                      function: dispatch
+                      class: Illuminate\Routing\Router
+                      type: '->'
+                    -
+                      file: /home/adovasoft_f001/development/travelapi-withlaravel/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php
+                      line: 141
+                      function: 'Illuminate\Foundation\Http\{closure}'
+                      class: Illuminate\Foundation\Http\Kernel
+                      type: '->'
+                    -
+                      file: /home/adovasoft_f001/development/travelapi-withlaravel/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php
+                      line: 21
+                      function: 'Illuminate\Pipeline\{closure}'
+                      class: Illuminate\Pipeline\Pipeline
+                      type: '->'
+                    -
+                      file: /home/adovasoft_f001/development/travelapi-withlaravel/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php
+                      line: 31
+                      function: handle
+                      class: Illuminate\Foundation\Http\Middleware\TransformsRequest
+                      type: '->'
+                    -
+                      file: /home/adovasoft_f001/development/travelapi-withlaravel/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php
+                      line: 180
+                      function: handle
+                      class: Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull
+                      type: '->'
+                    -
+                      file: /home/adovasoft_f001/development/travelapi-withlaravel/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php
+                      line: 21
+                      function: 'Illuminate\Pipeline\{closure}'
+                      class: Illuminate\Pipeline\Pipeline
+                      type: '->'
+                    -
+                      file: /home/adovasoft_f001/development/travelapi-withlaravel/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php
+                      line: 40
+                      function: handle
+                      class: Illuminate\Foundation\Http\Middleware\TransformsRequest
+                      type: '->'
+                    -
+                      file: /home/adovasoft_f001/development/travelapi-withlaravel/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php
+                      line: 180
+                      function: handle
+                      class: Illuminate\Foundation\Http\Middleware\TrimStrings
+                      type: '->'
+                    -
+                      file: /home/adovasoft_f001/development/travelapi-withlaravel/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ValidatePostSize.php
+                      line: 27
+                      function: 'Illuminate\Pipeline\{closure}'
+                      class: Illuminate\Pipeline\Pipeline
+                      type: '->'
+                    -
+                      file: /home/adovasoft_f001/development/travelapi-withlaravel/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php
+                      line: 180
+                      function: handle
+                      class: Illuminate\Foundation\Http\Middleware\ValidatePostSize
+                      type: '->'
+                    -
+                      file: /home/adovasoft_f001/development/travelapi-withlaravel/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php
+                      line: 86
+                      function: 'Illuminate\Pipeline\{closure}'
+                      class: Illuminate\Pipeline\Pipeline
+                      type: '->'
+                    -
+                      file: /home/adovasoft_f001/development/travelapi-withlaravel/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php
+                      line: 180
+                      function: handle
+                      class: Illuminate\Foundation\Http\Middleware\PreventRequestsDuringMaintenance
+                      type: '->'
+                    -
+                      file: /home/adovasoft_f001/development/travelapi-withlaravel/vendor/laravel/framework/src/Illuminate/Http/Middleware/HandleCors.php
+                      line: 62
+                      function: 'Illuminate\Pipeline\{closure}'
+                      class: Illuminate\Pipeline\Pipeline
+                      type: '->'
+                    -
+                      file: /home/adovasoft_f001/development/travelapi-withlaravel/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php
+                      line: 180
+                      function: handle
+                      class: Illuminate\Http\Middleware\HandleCors
+                      type: '->'
+                    -
+                      file: /home/adovasoft_f001/development/travelapi-withlaravel/vendor/laravel/framework/src/Illuminate/Http/Middleware/TrustProxies.php
+                      line: 39
+                      function: 'Illuminate\Pipeline\{closure}'
+                      class: Illuminate\Pipeline\Pipeline
+                      type: '->'
+                    -
+                      file: /home/adovasoft_f001/development/travelapi-withlaravel/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php
+                      line: 180
+                      function: handle
+                      class: Illuminate\Http\Middleware\TrustProxies
+                      type: '->'
+                    -
+                      file: /home/adovasoft_f001/development/travelapi-withlaravel/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php
+                      line: 116
+                      function: 'Illuminate\Pipeline\{closure}'
+                      class: Illuminate\Pipeline\Pipeline
+                      type: '->'
+                    -
+                      file: /home/adovasoft_f001/development/travelapi-withlaravel/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php
+                      line: 175
+                      function: then
+                      class: Illuminate\Pipeline\Pipeline
+                      type: '->'
+                    -
+                      file: /home/adovasoft_f001/development/travelapi-withlaravel/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php
+                      line: 144
+                      function: sendRequestThroughRouter
+                      class: Illuminate\Foundation\Http\Kernel
+                      type: '->'
+                    -
+                      file: /home/adovasoft_f001/development/travelapi-withlaravel/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php
+                      line: 299
+                      function: handle
+                      class: Illuminate\Foundation\Http\Kernel
+                      type: '->'
+                    -
+                      file: /home/adovasoft_f001/development/travelapi-withlaravel/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php
+                      line: 287
+                      function: callLaravelOrLumenRoute
+                      class: Knuckles\Scribe\Extracting\Strategies\Responses\ResponseCalls
+                      type: '->'
+                    -
+                      file: /home/adovasoft_f001/development/travelapi-withlaravel/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php
+                      line: 92
+                      function: makeApiCall
+                      class: Knuckles\Scribe\Extracting\Strategies\Responses\ResponseCalls
+                      type: '->'
+                    -
+                      file: /home/adovasoft_f001/development/travelapi-withlaravel/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php
+                      line: 45
+                      function: makeResponseCall
+                      class: Knuckles\Scribe\Extracting\Strategies\Responses\ResponseCalls
+                      type: '->'
+                    -
+                      file: /home/adovasoft_f001/development/travelapi-withlaravel/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php
+                      line: 35
+                      function: makeResponseCallIfConditionsPass
+                      class: Knuckles\Scribe\Extracting\Strategies\Responses\ResponseCalls
+                      type: '->'
+                    -
+                      file: /home/adovasoft_f001/development/travelapi-withlaravel/vendor/knuckleswtf/scribe/src/Extracting/Extractor.php
+                      line: 209
+                      function: __invoke
+                      class: Knuckles\Scribe\Extracting\Strategies\Responses\ResponseCalls
+                      type: '->'
+                    -
+                      file: /home/adovasoft_f001/development/travelapi-withlaravel/vendor/knuckleswtf/scribe/src/Extracting/Extractor.php
+                      line: 163
+                      function: iterateThroughStrategies
+                      class: Knuckles\Scribe\Extracting\Extractor
+                      type: '->'
+                    -
+                      file: /home/adovasoft_f001/development/travelapi-withlaravel/vendor/knuckleswtf/scribe/src/Extracting/Extractor.php
+                      line: 95
+                      function: fetchResponses
+                      class: Knuckles\Scribe\Extracting\Extractor
+                      type: '->'
+                    -
+                      file: /home/adovasoft_f001/development/travelapi-withlaravel/vendor/knuckleswtf/scribe/src/GroupedEndpoints/GroupedEndpointsFromApp.php
+                      line: 124
+                      function: processRoute
+                      class: Knuckles\Scribe\Extracting\Extractor
+                      type: '->'
+                    -
+                      file: /home/adovasoft_f001/development/travelapi-withlaravel/vendor/knuckleswtf/scribe/src/GroupedEndpoints/GroupedEndpointsFromApp.php
+                      line: 71
+                      function: extractEndpointsInfoFromLaravelApp
+                      class: Knuckles\Scribe\GroupedEndpoints\GroupedEndpointsFromApp
+                      type: '->'
+                    -
+                      file: /home/adovasoft_f001/development/travelapi-withlaravel/vendor/knuckleswtf/scribe/src/GroupedEndpoints/GroupedEndpointsFromApp.php
+                      line: 49
+                      function: extractEndpointsInfoAndWriteToDisk
+                      class: Knuckles\Scribe\GroupedEndpoints\GroupedEndpointsFromApp
+                      type: '->'
+                    -
+                      file: /home/adovasoft_f001/development/travelapi-withlaravel/vendor/knuckleswtf/scribe/src/Commands/GenerateDocumentation.php
+                      line: 51
+                      function: get
+                      class: Knuckles\Scribe\GroupedEndpoints\GroupedEndpointsFromApp
+                      type: '->'
+                    -
+                      file: /home/adovasoft_f001/development/travelapi-withlaravel/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php
+                      line: 36
+                      function: handle
+                      class: Knuckles\Scribe\Commands\GenerateDocumentation
+                      type: '->'
+                    -
+                      file: /home/adovasoft_f001/development/travelapi-withlaravel/vendor/laravel/framework/src/Illuminate/Container/Util.php
+                      line: 41
+                      function: 'Illuminate\Container\{closure}'
+                      class: Illuminate\Container\BoundMethod
+                      type: '::'
+                    -
+                      file: /home/adovasoft_f001/development/travelapi-withlaravel/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php
+                      line: 93
+                      function: unwrapIfClosure
+                      class: Illuminate\Container\Util
+                      type: '::'
+                    -
+                      file: /home/adovasoft_f001/development/travelapi-withlaravel/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php
+                      line: 35
+                      function: callBoundMethod
+                      class: Illuminate\Container\BoundMethod
+                      type: '::'
+                    -
+                      file: /home/adovasoft_f001/development/travelapi-withlaravel/vendor/laravel/framework/src/Illuminate/Container/Container.php
+                      line: 662
+                      function: call
+                      class: Illuminate\Container\BoundMethod
+                      type: '::'
+                    -
+                      file: /home/adovasoft_f001/development/travelapi-withlaravel/vendor/laravel/framework/src/Illuminate/Console/Command.php
+                      line: 208
+                      function: call
+                      class: Illuminate\Container\Container
+                      type: '->'
+                    -
+                      file: /home/adovasoft_f001/development/travelapi-withlaravel/vendor/symfony/console/Command/Command.php
+                      line: 326
+                      function: execute
+                      class: Illuminate\Console\Command
+                      type: '->'
+                    -
+                      file: /home/adovasoft_f001/development/travelapi-withlaravel/vendor/laravel/framework/src/Illuminate/Console/Command.php
+                      line: 177
+                      function: run
+                      class: Symfony\Component\Console\Command\Command
+                      type: '->'
+                    -
+                      file: /home/adovasoft_f001/development/travelapi-withlaravel/vendor/symfony/console/Application.php
+                      line: 1081
+                      function: run
+                      class: Illuminate\Console\Command
+                      type: '->'
+                    -
+                      file: /home/adovasoft_f001/development/travelapi-withlaravel/vendor/symfony/console/Application.php
+                      line: 320
+                      function: doRunCommand
+                      class: Symfony\Component\Console\Application
+                      type: '->'
+                    -
+                      file: /home/adovasoft_f001/development/travelapi-withlaravel/vendor/symfony/console/Application.php
+                      line: 174
+                      function: doRun
+                      class: Symfony\Component\Console\Application
+                      type: '->'
+                    -
+                      file: /home/adovasoft_f001/development/travelapi-withlaravel/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php
+                      line: 200
+                      function: run
+                      class: Symfony\Component\Console\Application
+                      type: '->'
+                    -
+                      file: /home/adovasoft_f001/development/travelapi-withlaravel/artisan
+                      line: 35
+                      function: handle
+                      class: Illuminate\Foundation\Console\Kernel
+                      type: '->'
+                properties:
+                  message:
+                    type: string
+                    example: 'The route api/v1/user could not be found.'
+                  exception:
+                    type: string
+                    example: Symfony\Component\HttpKernel\Exception\NotFoundHttpException
+                  file:
+                    type: string
+                    example: /home/adovasoft_f001/development/travelapi-withlaravel/vendor/laravel/framework/src/Illuminate/Routing/AbstractRouteCollection.php
+                  line:
+                    type: integer
+                    example: 44
+                  trace:
+                    type: array
+                    example:
+                      -
+                        file: /home/adovasoft_f001/development/travelapi-withlaravel/vendor/laravel/framework/src/Illuminate/Routing/RouteCollection.php
+                        line: 162
+                        function: handleMatchedRoute
+                        class: Illuminate\Routing\AbstractRouteCollection
+                        type: '->'
+                      -
+                        file: /home/adovasoft_f001/development/travelapi-withlaravel/vendor/laravel/framework/src/Illuminate/Routing/Router.php
+                        line: 754
+                        function: match
+                        class: Illuminate\Routing\RouteCollection
+                        type: '->'
+                      -
+                        file: /home/adovasoft_f001/development/travelapi-withlaravel/vendor/laravel/framework/src/Illuminate/Routing/Router.php
+                        line: 741
+                        function: findRoute
+                        class: Illuminate\Routing\Router
+                        type: '->'
+                      -
+                        file: /home/adovasoft_f001/development/travelapi-withlaravel/vendor/laravel/framework/src/Illuminate/Routing/Router.php
+                        line: 730
+                        function: dispatchToRoute
+                        class: Illuminate\Routing\Router
+                        type: '->'
+                      -
+                        file: /home/adovasoft_f001/development/travelapi-withlaravel/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php
+                        line: 200
+                        function: dispatch
+                        class: Illuminate\Routing\Router
+                        type: '->'
+                      -
+                        file: /home/adovasoft_f001/development/travelapi-withlaravel/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php
+                        line: 141
+                        function: 'Illuminate\Foundation\Http\{closure}'
+                        class: Illuminate\Foundation\Http\Kernel
+                        type: '->'
+                      -
+                        file: /home/adovasoft_f001/development/travelapi-withlaravel/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php
+                        line: 21
+                        function: 'Illuminate\Pipeline\{closure}'
+                        class: Illuminate\Pipeline\Pipeline
+                        type: '->'
+                      -
+                        file: /home/adovasoft_f001/development/travelapi-withlaravel/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php
+                        line: 31
+                        function: handle
+                        class: Illuminate\Foundation\Http\Middleware\TransformsRequest
+                        type: '->'
+                      -
+                        file: /home/adovasoft_f001/development/travelapi-withlaravel/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php
+                        line: 180
+                        function: handle
+                        class: Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull
+                        type: '->'
+                      -
+                        file: /home/adovasoft_f001/development/travelapi-withlaravel/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php
+                        line: 21
+                        function: 'Illuminate\Pipeline\{closure}'
+                        class: Illuminate\Pipeline\Pipeline
+                        type: '->'
+                      -
+                        file: /home/adovasoft_f001/development/travelapi-withlaravel/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php
+                        line: 40
+                        function: handle
+                        class: Illuminate\Foundation\Http\Middleware\TransformsRequest
+                        type: '->'
+                      -
+                        file: /home/adovasoft_f001/development/travelapi-withlaravel/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php
+                        line: 180
+                        function: handle
+                        class: Illuminate\Foundation\Http\Middleware\TrimStrings
+                        type: '->'
+                      -
+                        file: /home/adovasoft_f001/development/travelapi-withlaravel/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ValidatePostSize.php
+                        line: 27
+                        function: 'Illuminate\Pipeline\{closure}'
+                        class: Illuminate\Pipeline\Pipeline
+                        type: '->'
+                      -
+                        file: /home/adovasoft_f001/development/travelapi-withlaravel/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php
+                        line: 180
+                        function: handle
+                        class: Illuminate\Foundation\Http\Middleware\ValidatePostSize
+                        type: '->'
+                      -
+                        file: /home/adovasoft_f001/development/travelapi-withlaravel/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php
+                        line: 86
+                        function: 'Illuminate\Pipeline\{closure}'
+                        class: Illuminate\Pipeline\Pipeline
+                        type: '->'
+                      -
+                        file: /home/adovasoft_f001/development/travelapi-withlaravel/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php
+                        line: 180
+                        function: handle
+                        class: Illuminate\Foundation\Http\Middleware\PreventRequestsDuringMaintenance
+                        type: '->'
+                      -
+                        file: /home/adovasoft_f001/development/travelapi-withlaravel/vendor/laravel/framework/src/Illuminate/Http/Middleware/HandleCors.php
+                        line: 62
+                        function: 'Illuminate\Pipeline\{closure}'
+                        class: Illuminate\Pipeline\Pipeline
+                        type: '->'
+                      -
+                        file: /home/adovasoft_f001/development/travelapi-withlaravel/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php
+                        line: 180
+                        function: handle
+                        class: Illuminate\Http\Middleware\HandleCors
+                        type: '->'
+                      -
+                        file: /home/adovasoft_f001/development/travelapi-withlaravel/vendor/laravel/framework/src/Illuminate/Http/Middleware/TrustProxies.php
+                        line: 39
+                        function: 'Illuminate\Pipeline\{closure}'
+                        class: Illuminate\Pipeline\Pipeline
+                        type: '->'
+                      -
+                        file: /home/adovasoft_f001/development/travelapi-withlaravel/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php
+                        line: 180
+                        function: handle
+                        class: Illuminate\Http\Middleware\TrustProxies
+                        type: '->'
+                      -
+                        file: /home/adovasoft_f001/development/travelapi-withlaravel/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php
+                        line: 116
+                        function: 'Illuminate\Pipeline\{closure}'
+                        class: Illuminate\Pipeline\Pipeline
+                        type: '->'
+                      -
+                        file: /home/adovasoft_f001/development/travelapi-withlaravel/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php
+                        line: 175
+                        function: then
+                        class: Illuminate\Pipeline\Pipeline
+                        type: '->'
+                      -
+                        file: /home/adovasoft_f001/development/travelapi-withlaravel/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php
+                        line: 144
+                        function: sendRequestThroughRouter
+                        class: Illuminate\Foundation\Http\Kernel
+                        type: '->'
+                      -
+                        file: /home/adovasoft_f001/development/travelapi-withlaravel/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php
+                        line: 299
+                        function: handle
+                        class: Illuminate\Foundation\Http\Kernel
+                        type: '->'
+                      -
+                        file: /home/adovasoft_f001/development/travelapi-withlaravel/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php
+                        line: 287
+                        function: callLaravelOrLumenRoute
+                        class: Knuckles\Scribe\Extracting\Strategies\Responses\ResponseCalls
+                        type: '->'
+                      -
+                        file: /home/adovasoft_f001/development/travelapi-withlaravel/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php
+                        line: 92
+                        function: makeApiCall
+                        class: Knuckles\Scribe\Extracting\Strategies\Responses\ResponseCalls
+                        type: '->'
+                      -
+                        file: /home/adovasoft_f001/development/travelapi-withlaravel/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php
+                        line: 45
+                        function: makeResponseCall
+                        class: Knuckles\Scribe\Extracting\Strategies\Responses\ResponseCalls
+                        type: '->'
+                      -
+                        file: /home/adovasoft_f001/development/travelapi-withlaravel/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php
+                        line: 35
+                        function: makeResponseCallIfConditionsPass
+                        class: Knuckles\Scribe\Extracting\Strategies\Responses\ResponseCalls
+                        type: '->'
+                      -
+                        file: /home/adovasoft_f001/development/travelapi-withlaravel/vendor/knuckleswtf/scribe/src/Extracting/Extractor.php
+                        line: 209
+                        function: __invoke
+                        class: Knuckles\Scribe\Extracting\Strategies\Responses\ResponseCalls
+                        type: '->'
+                      -
+                        file: /home/adovasoft_f001/development/travelapi-withlaravel/vendor/knuckleswtf/scribe/src/Extracting/Extractor.php
+                        line: 163
+                        function: iterateThroughStrategies
+                        class: Knuckles\Scribe\Extracting\Extractor
+                        type: '->'
+                      -
+                        file: /home/adovasoft_f001/development/travelapi-withlaravel/vendor/knuckleswtf/scribe/src/Extracting/Extractor.php
+                        line: 95
+                        function: fetchResponses
+                        class: Knuckles\Scribe\Extracting\Extractor
+                        type: '->'
+                      -
+                        file: /home/adovasoft_f001/development/travelapi-withlaravel/vendor/knuckleswtf/scribe/src/GroupedEndpoints/GroupedEndpointsFromApp.php
+                        line: 124
+                        function: processRoute
+                        class: Knuckles\Scribe\Extracting\Extractor
+                        type: '->'
+                      -
+                        file: /home/adovasoft_f001/development/travelapi-withlaravel/vendor/knuckleswtf/scribe/src/GroupedEndpoints/GroupedEndpointsFromApp.php
+                        line: 71
+                        function: extractEndpointsInfoFromLaravelApp
+                        class: Knuckles\Scribe\GroupedEndpoints\GroupedEndpointsFromApp
+                        type: '->'
+                      -
+                        file: /home/adovasoft_f001/development/travelapi-withlaravel/vendor/knuckleswtf/scribe/src/GroupedEndpoints/GroupedEndpointsFromApp.php
+                        line: 49
+                        function: extractEndpointsInfoAndWriteToDisk
+                        class: Knuckles\Scribe\GroupedEndpoints\GroupedEndpointsFromApp
+                        type: '->'
+                      -
+                        file: /home/adovasoft_f001/development/travelapi-withlaravel/vendor/knuckleswtf/scribe/src/Commands/GenerateDocumentation.php
+                        line: 51
+                        function: get
+                        class: Knuckles\Scribe\GroupedEndpoints\GroupedEndpointsFromApp
+                        type: '->'
+                      -
+                        file: /home/adovasoft_f001/development/travelapi-withlaravel/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php
+                        line: 36
+                        function: handle
+                        class: Knuckles\Scribe\Commands\GenerateDocumentation
+                        type: '->'
+                      -
+                        file: /home/adovasoft_f001/development/travelapi-withlaravel/vendor/laravel/framework/src/Illuminate/Container/Util.php
+                        line: 41
+                        function: 'Illuminate\Container\{closure}'
+                        class: Illuminate\Container\BoundMethod
+                        type: '::'
+                      -
+                        file: /home/adovasoft_f001/development/travelapi-withlaravel/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php
+                        line: 93
+                        function: unwrapIfClosure
+                        class: Illuminate\Container\Util
+                        type: '::'
+                      -
+                        file: /home/adovasoft_f001/development/travelapi-withlaravel/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php
+                        line: 35
+                        function: callBoundMethod
+                        class: Illuminate\Container\BoundMethod
+                        type: '::'
+                      -
+                        file: /home/adovasoft_f001/development/travelapi-withlaravel/vendor/laravel/framework/src/Illuminate/Container/Container.php
+                        line: 662
+                        function: call
+                        class: Illuminate\Container\BoundMethod
+                        type: '::'
+                      -
+                        file: /home/adovasoft_f001/development/travelapi-withlaravel/vendor/laravel/framework/src/Illuminate/Console/Command.php
+                        line: 208
+                        function: call
+                        class: Illuminate\Container\Container
+                        type: '->'
+                      -
+                        file: /home/adovasoft_f001/development/travelapi-withlaravel/vendor/symfony/console/Command/Command.php
+                        line: 326
+                        function: execute
+                        class: Illuminate\Console\Command
+                        type: '->'
+                      -
+                        file: /home/adovasoft_f001/development/travelapi-withlaravel/vendor/laravel/framework/src/Illuminate/Console/Command.php
+                        line: 177
+                        function: run
+                        class: Symfony\Component\Console\Command\Command
+                        type: '->'
+                      -
+                        file: /home/adovasoft_f001/development/travelapi-withlaravel/vendor/symfony/console/Application.php
+                        line: 1081
+                        function: run
+                        class: Illuminate\Console\Command
+                        type: '->'
+                      -
+                        file: /home/adovasoft_f001/development/travelapi-withlaravel/vendor/symfony/console/Application.php
+                        line: 320
+                        function: doRunCommand
+                        class: Symfony\Component\Console\Application
+                        type: '->'
+                      -
+                        file: /home/adovasoft_f001/development/travelapi-withlaravel/vendor/symfony/console/Application.php
+                        line: 174
+                        function: doRun
+                        class: Symfony\Component\Console\Application
+                        type: '->'
+                      -
+                        file: /home/adovasoft_f001/development/travelapi-withlaravel/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php
+                        line: 200
+                        function: run
+                        class: Symfony\Component\Console\Application
+                        type: '->'
+                      -
+                        file: /home/adovasoft_f001/development/travelapi-withlaravel/artisan
+                        line: 35
+                        function: handle
+                        class: Illuminate\Foundation\Console\Kernel
+                        type: '->'
+                    items:
+                      type: object
+                      properties:
+                        file:
+                          type: string
+                          example: /home/adovasoft_f001/development/travelapi-withlaravel/vendor/laravel/framework/src/Illuminate/Routing/RouteCollection.php
+                        line:
+                          type: integer
+                          example: 162
+                        function:
+                          type: string
+                          example: handleMatchedRoute
+                        class:
+                          type: string
+                          example: Illuminate\Routing\AbstractRouteCollection
+                        type:
+                          type: string
+                          example: '->'
+      tags:
+        - Endpoints
+      security: []
+  /api/v1/travels:
+    get:
+      summary: 'GET Travel'
+      operationId: gETTravel
+      description: 'Get a list of public Travel records.'
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: '{"data": [{"id": 123b13bn-2342-2342-2342-234234234234, "name": "Travel 1", "slug": "travel-1", "description": "Description of travel 1", "number_of_days": 5, "number_of_nights": 4}, {"id": 123b13bn-2342-2342-2342-234234234234, "name": "Travel 2", "slug": "travel-2", "description": "Description of travel 2", "number_of_days": 5, "number_of_nights": 4}]}'
+      tags:
+        - 'Public endpoint'
+      security: []
+  '/api/v1/travels/{travel_slug}/tours':
+    get:
+      summary: 'GET Travel Tours'
+      operationId: gETTravelTours
+      description: 'Get a list of Travel tours.'
+      parameters:
+        -
+          in: query
+          name: priceFrom
+          description: 'The minimum price of the tour.'
+          example: 1000
+          required: false
+          schema:
+            type: integer
+            description: 'The minimum price of the tour.'
+            example: 1000
+        -
+          in: query
+          name: priceTo
+          description: 'The maximum price of the tour.'
+          example: 2000
+          required: false
+          schema:
+            type: integer
+            description: 'The maximum price of the tour.'
+            example: 2000
+        -
+          in: query
+          name: dateFrom
+          description: 'date The starting date of the tour.'
+          example: '2021-01-01'
+          required: false
+          schema:
+            type: string
+            description: 'date The starting date of the tour.'
+            example: '2021-01-01'
+        -
+          in: query
+          name: dateTo
+          description: 'date The ending date of the tour.'
+          example: '2021-01-10'
+          required: false
+          schema:
+            type: string
+            description: 'date The ending date of the tour.'
+            example: '2021-01-10'
+        -
+          in: query
+          name: sortBy
+          description: 'The field to sort by.'
+          example: price
+          required: false
+          schema:
+            type: string
+            description: 'The field to sort by.'
+            example: price
+        -
+          in: query
+          name: sortOrder
+          description: 'The order to sort by.'
+          example: asc
+          required: false
+          schema:
+            type: string
+            description: 'The order to sort by.'
+            example: asc
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    -
+                      id: 1
+                      name: 'Tour 1'
+                      starting_date: '2021-01-01'
+                      ending_date: '2021-01-10'
+                      price: '1000.00'
+                  links:
+                    first: 'http://localhost:8000/api/v1/travels/1/tours?page=1'
+                    last: 'http://localhost:8000/api/v1/travels/1/tours?page=1'
+                    prev: null
+                    next: null
+                  meta:
+                    current_page: 1
+                    from: 1
+                    last_page: 1
+                    links:
+                      -
+                        url: null
+                        label: '&laquo; Previous'
+                        active: false
+                      -
+                        url: 'http://localhost:8000/api/v1/travels/1/tours?page=1'
+                        label: 1
+                        active: true
+                      -
+                        url: null
+                        label: 'Next &raquo;'
+                        active: false
+                    path: 'http://localhost:8000/api/v1/travels/1/tours'
+                    per_page: 15
+                    to: 1
+                    total: 1
+                properties:
+                  data:
+                    type: array
+                    example:
+                      -
+                        id: 1
+                        name: 'Tour 1'
+                        starting_date: '2021-01-01'
+                        ending_date: '2021-01-10'
+                        price: '1000.00'
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 1
+                        name:
+                          type: string
+                          example: 'Tour 1'
+                        starting_date:
+                          type: string
+                          example: '2021-01-01'
+                        ending_date:
+                          type: string
+                          example: '2021-01-10'
+                        price:
+                          type: string
+                          example: '1000.00'
+                  links:
+                    type: object
+                    properties:
+                      first:
+                        type: string
+                        example: 'http://localhost:8000/api/v1/travels/1/tours?page=1'
+                      last:
+                        type: string
+                        example: 'http://localhost:8000/api/v1/travels/1/tours?page=1'
+                      prev:
+                        type: string
+                        example: null
+                      next:
+                        type: string
+                        example: null
+                  meta:
+                    type: object
+                    properties:
+                      current_page:
+                        type: integer
+                        example: 1
+                      from:
+                        type: integer
+                        example: 1
+                      last_page:
+                        type: integer
+                        example: 1
+                      links:
+                        type: array
+                        example:
+                          -
+                            url: null
+                            label: '&laquo; Previous'
+                            active: false
+                          -
+                            url: 'http://localhost:8000/api/v1/travels/1/tours?page=1'
+                            label: 1
+                            active: true
+                          -
+                            url: null
+                            label: 'Next &raquo;'
+                            active: false
+                        items:
+                          type: object
+                          properties:
+                            url:
+                              type: string
+                              example: null
+                            label:
+                              type: string
+                              example: '&laquo; Previous'
+                            active:
+                              type: boolean
+                              example: false
+                      path:
+                        type: string
+                        example: 'http://localhost:8000/api/v1/travels/1/tours'
+                      per_page:
+                        type: integer
+                        example: 15
+                      to:
+                        type: integer
+                        example: 1
+                      total:
+                        type: integer
+                        example: 1
+        422:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'The given data was invalid.'
+                  errors:
+                    priceFrom:
+                      - 'The price from must be an integer.'
+                    priceTo:
+                      - 'The price to must be an integer.'
+                    dateFrom:
+                      - 'The date from is not a valid date.'
+                    dateTo:
+                      - 'The date to is not a valid date.'
+                    sortBy:
+                      - 'The selected sortBy is invalid.'
+                    sortOrder:
+                      - 'The selected sortOrder is invalid.'
+                properties:
+                  message:
+                    type: string
+                    example: 'The given data was invalid.'
+                  errors:
+                    type: object
+                    properties:
+                      priceFrom:
+                        type: array
+                        example:
+                          - 'The price from must be an integer.'
+                        items:
+                          type: string
+                      priceTo:
+                        type: array
+                        example:
+                          - 'The price to must be an integer.'
+                        items:
+                          type: string
+                      dateFrom:
+                        type: array
+                        example:
+                          - 'The date from is not a valid date.'
+                        items:
+                          type: string
+                      dateTo:
+                        type: array
+                        example:
+                          - 'The date to is not a valid date.'
+                        items:
+                          type: string
+                      sortBy:
+                        type: array
+                        example:
+                          - 'The selected sortBy is invalid.'
+                        items:
+                          type: string
+                      sortOrder:
+                        type: array
+                        example:
+                          - 'The selected sortOrder is invalid.'
+                        items:
+                          type: string
+      tags:
+        - 'Public endpoint'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                priceFrom:
+                  type: number
+                  description: ''
+                  example: 9304401.4501426
+                priceTo:
+                  type: number
+                  description: ''
+                  example: 2501143.47
+                dateFrom:
+                  type: string
+                  description: 'Must be a valid date.'
+                  example: '2023-06-19T09:43:14'
+                dateTo:
+                  type: string
+                  description: 'Must be a valid date.'
+                  example: '2023-06-19T09:43:14'
+                sortBy:
+                  type: string
+                  description: 'Must be one of <code>price</code>.'
+                  example: price
+                sortOrder:
+                  type: string
+                  description: 'Must be one of <code>asc</code> or <code>desc</code>.'
+                  example: asc
+      security: []
+    parameters:
+      -
+        in: path
+        name: travel_slug
+        description: 'The slug of the travel.'
+        example: 9968352d-b1ee-4b23-bb49-b5931da0466f
+        required: true
+        schema:
+          type: string
+tags:
+  -
+    name: 'Admin endpoint'
+    description: ''
+  -
+    name: 'Auth endpoint'
+    description: ''
+  -
+    name: Endpoints
+    description: ''
+  -
+    name: 'Public endpoint'
+    description: ''
